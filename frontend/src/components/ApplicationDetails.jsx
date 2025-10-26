@@ -11,10 +11,7 @@ const ApplicationDetails = () => {
   const [application, setApplication] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const handleEdit = (app) => {
-    onEditClick(app);
-    navigate("/new");
-  };
+
   useEffect(() => {
     const fetchApplication = async () => {
       try {
@@ -32,6 +29,11 @@ const ApplicationDetails = () => {
 
     fetchApplication();
   }, [id]);
+
+  const handleEdit = () => {
+    // Navigate to the new application page with the current application data for editing
+    navigate("/new", { state: { editApplication: application } });
+  };
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -84,9 +86,6 @@ const ApplicationDetails = () => {
   return (
     <div className="page-container">
       <div className="details-header">
-        <button onClick={() => navigate("/")} className="back-button">
-          ← Back to Applications
-        </button>
         <h1>Application Details</h1>
       </div>
 
@@ -117,7 +116,7 @@ const ApplicationDetails = () => {
         </div>
 
         <div className="detail-actions">
-          <button onClick={() => handleEdit(app)} className="btn-primary">
+          <button onClick={handleEdit} className="btn-primary">
             Edit Application
           </button>
           <button onClick={() => navigate("/")} className="btn-secondary">

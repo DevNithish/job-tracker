@@ -163,6 +163,26 @@
   color: #ef4444;
 }
 
+/* Add to ApplicationForm.css */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
 /* smaller screens */
 @media (max-width: 768px) {
   .application-form {

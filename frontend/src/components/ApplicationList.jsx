@@ -34,7 +34,8 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
     fetchApplications();
   }, [refreshKey]);
 
-  const handleDeleteClick = (app) => {
+  const handleDeleteClick = (app, e) => {
+    e.stopPropagation(); // Prevent row click when clicking delete
     setAppToDelete(app);
     setIsModalOpen(true);
   };
@@ -63,8 +64,13 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
     }
   };
 
-  const handleEdit = (app) => {
+  const handleEdit = (app, e) => {
+    e.stopPropagation(); // Prevent row click when clicking edit
     navigate("/new", { state: { editApplication: app } });
+  };
+
+  const handleRowClick = (app) => {
+    navigate(`/application/${app._id}`);
   };
 
   const formatDate = (dateString) => {
@@ -104,12 +110,6 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
     <div className="application-list">
       <div className="list-header">
         <h2 className="list-title">Applications</h2>
-        {applications.length > 0 && (
-          <div className="applications-count">
-            {applications.length}{" "}
-            {applications.length === 1 ? "application" : "applications"}
-          </div>
-        )}
       </div>
 
       {applications.length === 0 ? (
@@ -134,14 +134,13 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
           </thead>
           <tbody>
             {applications.map((app) => (
-              <tr key={app._id}>
+              <tr
+                key={app._id}
+                className="clickable-row"
+                onClick={() => handleRowClick(app)}
+              >
                 <td>
-                  <button
-                    className="company-name"
-                    onClick={() => navigate(`/application/${app._id}`)}
-                  >
-                    {app.companyName}
-                  </button>
+                  <span className="company-name">{app.companyName}</span>
                 </td>
                 <td>{app.jobTitle}</td>
                 <td>{formatDate(app.applicationDate)}</td>
@@ -154,13 +153,13 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
                   <div className="actions-cell">
                     <button
                       className="btn-edit"
-                      onClick={() => handleEdit(app)}
+                      onClick={(e) => handleEdit(app, e)}
                     >
                       Edit
                     </button>
                     <button
                       className="btn-delete"
-                      onClick={() => handleDeleteClick(app)}
+                      onClick={(e) => handleDeleteClick(app, e)}
                     >
                       Delete
                     </button>

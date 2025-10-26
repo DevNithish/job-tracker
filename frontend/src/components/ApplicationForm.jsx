@@ -97,9 +97,10 @@ const ApplicationForm = ({ onDataUpdated, onCancelEdit }) => {
       }
 
       setTimeout(() => {
-        if (!isEditMode) {
-          navigate("/");
-        }
+        if (isEditMode) {
+          alert("update successful");
+        } else alert("job added successfully");
+        navigate("/");
       }, 1500);
     } catch (err) {
       setLoading(false);

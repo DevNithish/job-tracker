@@ -15,5 +15,5 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("Successfully connected to MongoDB Atlas!"))
   .catch(err => console.error("MongoDB connection error:", err));
 
-app.use('/api/applications', applicationRoutes); 
+app.use('/applications', applicationRoutes); 
 module.exports = app;

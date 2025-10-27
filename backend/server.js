@@ -16,11 +16,4 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error("MongoDB connection error:", err));
 
 app.use('/api/applications', applicationRoutes); 
-
-app.get('/', (req, res) => {
-  res.send('Job Application Tracker API is running!');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-});
+module.exports = app;

@@ -4,7 +4,7 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 import "./ApplicationList.css";
 
-const API_URL = "http://localhost:5001/api/applications";
+const API_URL = "/api/applications";
 
 const ApplicationList = ({ refreshKey, onDataUpdated }) => {
   const [applications, setApplications] = useState([]);

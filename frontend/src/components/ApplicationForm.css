@@ -163,7 +163,6 @@
   color: #ef4444;
 }
 
-/* Add to ApplicationForm.css */
 .loading-spinner {
   display: inline-block;
   width: 16px;
@@ -180,8 +179,6 @@
     transform: rotate(360deg);
   }
 }
-
-
 
 /* smaller screens */
 @media (max-width: 768px) {

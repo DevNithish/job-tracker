@@ -35,7 +35,7 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
   }, [refreshKey]);
 
   const handleDeleteClick = (app, e) => {
-    e.stopPropagation(); // Prevent row click when clicking delete
+    e.stopPropagation();
     setAppToDelete(app);
     setIsModalOpen(true);
   };
@@ -65,7 +65,7 @@ const ApplicationList = ({ refreshKey, onDataUpdated }) => {
   };
 
   const handleEdit = (app, e) => {
-    e.stopPropagation(); // Prevent row click when clicking edit
+    e.stopPropagation();
     navigate("/new", { state: { editApplication: app } });
   };
 

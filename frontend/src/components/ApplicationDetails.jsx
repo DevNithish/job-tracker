@@ -31,7 +31,6 @@ const ApplicationDetails = () => {
   }, [id]);
 
   const handleEdit = () => {
-    // Navigate to the new application page with the current application data for editing
     navigate("/new", { state: { editApplication: application } });
   };
 

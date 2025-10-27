@@ -101,7 +101,7 @@ const ApplicationForm = ({ onDataUpdated, onCancelEdit }) => {
           alert("update successful");
         } else alert("job added successfully");
         navigate("/");
-      }, 1500);
+      }, 500);
     } catch (err) {
       setLoading(false);
       if (err.response && err.response.data && err.response.data.message) {
